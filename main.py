@@ -20,7 +20,7 @@ def main_loop():
     if answer == '1':
         run_active_recon()
     elif answer == '2':
-        pass
+        run_subdomain_enum()
     elif answer == '3':
         run_record_lookup()
     elif answer == '4':
@@ -33,6 +33,13 @@ def run_record_lookup():
     print("Running record lookup...\n\n\n")
     base_dir = os.path.dirname(os.path.abspath(__file__))
     script_path = os.path.join(base_dir, 'active-recon', 'record-lookup.py')
+
+    subprocess.run([sys.executable, script_path])
+
+def run_subdomain_enum():
+    print("Running subdomain enumeration...\n\n\n")
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    script_path = os.path.join(base_dir, 'active-recon', 'subdomain-enum.py')
 
     subprocess.run([sys.executable, script_path])
     

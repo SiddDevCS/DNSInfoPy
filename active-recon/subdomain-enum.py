@@ -27,9 +27,12 @@ def resolve(name):
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python tiny_subs.py example.com")
-        return
-    domain = sys.argv[1].strip().lower().rstrip(".")
+        domain = input("Enter the domain to enumerate subdomains for: ").strip().lower().rstrip(".")
+        if not domain:
+            print("No domain entered. Exiting.")
+            return
+    else:
+        domain = sys.argv[1].strip().lower().rstrip(".")
     crt = fetch_crtsh(domain)
     candidates = set(crt)
     for w in SIMPLE_WORDS:
